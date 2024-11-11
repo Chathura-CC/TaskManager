@@ -8,3 +8,56 @@ header .dropdown {
 header .dropdown:hover {
   background-color: #f3f4f6;
 }
+
+/* Toast container position and size for mobile screens */
+.Toastify__toast-container {
+  max-width: 100% !important; /* Allow full-width for mobile */
+  padding: 10px !important; /* Add padding to make space around the toast */
+}
+
+/* Toast message styling */
+.Toastify__toast {
+  font-size: 14px !important; /* Smaller font size for mobile screens */
+  padding: 12px !important; /* Increase padding for better readability */
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* Success Toast */
+.Toastify__toast--success {
+  background-color: #28a745; /* Green background for success */
+  color: white !important; /* White text */
+}
+
+/* Error Toast */
+.Toastify__toast--error {
+  background-color: #dc3545; /* Red background for errors */
+  color: white !important; /* White text */
+}
+
+/* Info Toast */
+.Toastify__toast--info {
+  background-color: #17a2b8; /* Info background color */
+  color: white !important; /* White text */
+}
+
+/* Warning Toast */
+.Toastify__toast--warning {
+  background-color: #ffc107; /* Yellow background for warning */
+  color: black !important; /* Black text */
+}
+
+/* Custom styles for small screens (responsive) */
+@media screen and (max-width: 600px) {
+  .Toastify__toast {
+    font-size: 12px; /* Smaller font size for mobile devices */
+    padding: 10px 15px; /* Reduced padding on small screens */
+    width: 90% !important; /* Reduce width to fit on small screens */
+    left: 5% !important; /* Align to the center */
+  }
+
+  /* Make sure toasts are not too large for mobile screens */
+  .Toastify__toast-container {
+    width: 100% !important; /* Make sure container width is 100% */
+    max-width: 100% !important;
+  }
+}
