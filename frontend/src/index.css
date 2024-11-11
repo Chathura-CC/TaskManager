@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+header .dropdown {
+  transition: all 0.3s ease-in-out;
+}
+
+header .dropdown:hover {
+  background-color: #f3f4f6;
+}
