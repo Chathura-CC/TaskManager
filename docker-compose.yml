@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Backend service
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: taskmanager-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRE=${JWT_EXPIRE}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+    depends_on:
+      - mongo
+    networks:
+      - taskmanager-network
+    restart: always
+
+  # Frontend service
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: taskmanager-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - taskmanager-network
+    restart: always
+
+  # MongoDB service (using MongoDB Atlas as DB)
+  mongo:
+    image: mongo:latest
+    container_name: taskmanager-mongo
+    networks:
+      - taskmanager-network
+    restart: always
+
+networks:
+  taskmanager-network:
+    driver: bridge
